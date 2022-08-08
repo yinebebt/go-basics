@@ -1,28 +1,25 @@
 // Refactoring long ifs into a better way:function which greets name in a particular language
 package main
-import(
-	"fmt";
-	"errors";
+
+import (
+	"errors"
+	"fmt"
 )
 
-var greetings = make(map[string]string){
-	"en" = "Hello",
-	"fr" = "Bounjar",
-	"it" = "itali",
-	"or" = "Akam",
-	"amh" = "ሰለመ",
+var greetings = map[string]string{ // globally dcalarations need a var keyword.
+	"en":  "Hello",
+	"fr":  "Bounjar",
+	"it":  "itali",
+	"or":  "Akam",
+	"amh": "ሰለመ",
 }
 
-func greet(name){
-	for lang ;lang, exists:= greetings{
-		if exists{
-			fmt.Println(lang, name)
-		}else{
-			error.New("Language not found!")
+func greet(name string) {
+	for id, _ := range greetings {
+		if welcom, ok := greetings[id]; ok {
+			fmt.Println(welcom, name)
+		} else {
+			errors.New("Language not found!")
 		}
 	}
-}
-
-func main(){
-	greet("Yinebeb")
 }

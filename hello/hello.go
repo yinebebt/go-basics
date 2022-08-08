@@ -105,4 +105,6 @@ func main() {
 	fmt.Println(emp2)
 	fmt.Println(emp3)
 
+	greet("yina")
+
 }
