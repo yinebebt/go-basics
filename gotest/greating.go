@@ -14,7 +14,7 @@ var greetings = map[string]string{
 	//etc..
 }
 
-func greeting(language string) string {
+func greeting(language string) string { //breakPoint - just to get the idea...
 	greeting, exists := greetings[language]
 	if exists {
 		return greeting
@@ -25,4 +25,8 @@ func greeting(language string) string {
 func main() {
 	result := Hello("Yinebeb", "fr")
 	fmt.Println(result)
+
+	//from goWithTest
+	//fmt.Println(Hello())
+
 }
