@@ -15,29 +15,23 @@ func hello(name, lang string) string {
 	if name == "" {
 		name = "World"
 	}
-	// if lang == "sp" {
-	// 	return spanish + "," + name
-	// }
-	// if lang == "fr" {
-	// 	return french + "," + name
-	// }
-	// if lang == "amh" {
-	// 	return amharic + "," + name
-	// }
-	// but instead of doing such lengthy if; let I use switch()
+	return greeting(lang) + "," + name
+}
+
+// again let I refactor the func...
+func greeting(lang string) (prefix string) {
 	switch lang {
 	case "sp":
-		return spanish + "," + name
+		prefix = spanish
 	case "fr":
-		return french + "," + name
+		prefix = french
 	case "amh":
-		return amharic + "," + name
+		prefix = amharic
 	default:
-		return def_eng + " " + name
+		prefix = def_eng
 	}
-
+	return
 }
 func main() {
 	fmt.Println(hello("Yinebeb", "en"))
-
 }

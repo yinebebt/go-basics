@@ -18,7 +18,7 @@ import (
 func TestTrial(t *testing.T) {
 	//@test   , subtest1  ; if test one passed but following subtest failed,
 	//the compiler will report as it fiales. no way to show the pass of subtest1
-	t.Run("Say hello to the people", func(t *testing.T) {
+	t.Run("Say hello to the people", func(t *testing.T) { // the first argu seems a test name--- for debugging purpose
 		got := hello("Tina", "fr") //what the code gives us
 		want := "Bonjour,Tina"     //the result which we are expecting to become.
 		// if got != want {
@@ -29,7 +29,7 @@ func TestTrial(t *testing.T) {
 	//@test , subtest2
 	t.Run("Say hello to the world", func(t *testing.T) {
 		got := hello("", "en")
-		want := "hello World"
+		want := "hello,World"
 		// if got != want {
 		// 	t.Errorf("got%q, want%q", got, want)
 		// }
