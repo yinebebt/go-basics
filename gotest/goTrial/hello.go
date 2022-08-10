@@ -7,10 +7,13 @@ import (
 //once I passed the test, let I refactor by adding a constant and test agian.
 const helloPrefix = "hello"
 
-func hello(name string) string {
+func hello(name, lang string) string {
+	if name == "" {
+		name = "World"
+	}
 	return helloPrefix + " " + name
 }
 func main() {
-	fmt.Println(hello("Yinebeb"))
+	fmt.Println(hello("Yinebeb","en"))
 
 }
