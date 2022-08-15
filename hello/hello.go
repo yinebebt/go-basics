@@ -75,9 +75,7 @@ func main() {
 	fmt.Println("second value", count)
 	count--
 	fmt.Println("THird value", count)
-	//fmt.Println(count++)  // here increments are removed for expression, not as in other like c,c++, java.
-	//You know as increment/decrement doesn't exist in python.
-	// also prefix like --count also an error in go.
+
 
 	//work with loop, conditions
 	var odd []int

@@ -10,3 +10,7 @@
 		fmt.Println("Argument # = ", len(os.Args))
 		fmt.Println(s)
 	*/
+
+    //fmt.Println(count++)  // here increments are removed for expression, not as in other like c,c++, java.
+	//You know as increment/decrement doesn't exist in python.
+	// also prefix like --count also an error in go.
