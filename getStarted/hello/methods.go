@@ -100,3 +100,22 @@ func swap(x *int, y *int) {
 	//*px, *py = *py, *px   //this approach seems by appying concurrency, go assign both value at a time; the change will reflect after this line goes run.. I think
 	// but this is not the fact; rather it is due right-side expressions will evaluate first, then assignment goes right to left.
 }
+
+// Refactoring long-ifs into a better way:function which greets name in a particular language
+var greetings = map[string]string{ // globally dcalarations need a var keyword.
+	"en":  "Hello",
+	"fr":  "Bounjar",
+	"it":  "itali",
+	"or":  "Akam",
+	"amh": "ሰለመ",
+}
+
+func greet(name string) {
+	for id, _ := range greetings {
+		if welcom, ok := greetings[id]; ok {
+			fmt.Println(welcom, name)
+		} else {
+			errors.New("Language not found!")
+		}
+	}
+}
