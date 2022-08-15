@@ -1,0 +1,12 @@
+
+	/*
+		for i := 0; i < 10; i++ {
+			fmt.Println(math.Pow(2, float64(i)))
+		}
+		// second version -command line argument: os.Args
+
+		arg_len := len(os.Args[1:]) //slicing to remove the first element and grab all other arguments after index 0.
+		fmt.Println("Argument length: ", arg_len)
+		fmt.Println("Argument # = ", len(os.Args))
+		fmt.Println(s)
+	*/

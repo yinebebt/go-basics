@@ -1,17 +1,45 @@
 /*Get started with golang, let we dig to go...*/
-package main
+
+package main // declaring a package named 'main'.
 
 import (
 	"fmt"
 	"unsafe"
 )
 
+// work with struct
+type person struct {
+	name    string
+	age     int
+	address string
+}
+
 func main() {
 	fmt.Println("Hello, linux users this is golang project; july 27,2022@sheger tower")
 	// practicing datatypes
 	name := "AHello"
-	a := name[0] //this will proint the ascii code, 65 for A.
-	fmt.Println(a)
+	aa := name[0] //this will proint the ascii code, 65 for A.
+	fmt.Println(aa)
+
+	// first version
+	// variable decalration
+	var price int = 10 // default intialize to 0, string to ""
+	salary := 1000
+	var s string
+	s = "Hello guys!"
+
+	fmt.Println(price)
+	fmt.Println(salary)
+	fmt.Println(s)
+
+	// array and slice: array is fixed sized, slice is variable size
+	var a [5]int // array
+	total := 0
+	for i := range a {
+		a[i] = i * 4
+		total += a[i]
+	}
+	fmt.Println("average=", total/len(a))
 
 	var b int = 21
 	var c = "Saint Mary"
@@ -105,6 +133,108 @@ func main() {
 	fmt.Println(emp2)
 	fmt.Println(emp3)
 
+	bb := []int{4, 5, 6, 7, 8} // slice
+	fmt.Println(bb)
+
+	slice := make([]float64, 5, 10) // always slice is associated with an array,
+	//as it is a segment of array.5 is the size of the slice, 10 is the max capacity the slice is pointed.
+	arr := [10]float64{1, 2, 3, 4, 5, 6, 7, 0, 8, 9}
+	slic2 := arr[2:5]
+	fmt.Print("Slice:", slice, "\narr:", arr, "\nslice b/n 2:6", slic2)
+
+	// loop- the only one is for loop:
+	for i := 0; i < 3; i++ {
+		fmt.Println("\n", i+2)
+	}
+	//to resembele the while loop:
+	i := 0
+	for i < 3 {
+		fmt.Println(i + 2)
+		i++
+	}
+
+	// a hash table - go's map
+	m := make(map[int]string) // before use, map need to be initiated. this is iitiated wit pair 0,"" values
+	m[1] = "Apple"
+	m[2] = "Samsung"
+	m[3] = "Nokia"
+	for key, value := range m {
+		fmt.Println("Key", key, "value", value)
+	}
+	delete(m, 2) // this remove the second element of map m.
+	id, val := m[2]
+	fmt.Println("id which is looked from the map at key 2:", id, "status either the lookup is successful or not:", val)
+	//or
+	if id1, ok := m[1]; ok { // if the lookup operation is successful,
+		fmt.Println("from the if block of map", id1, ok)
+	}
+
+	//more on map:
+	employee := map[string]map[string]float64{
+		"Tigst": {
+			"salary": 10000,
+			"age":    24,
+		},
+		"Abel": {
+			"experience": 4,
+			"salary":     41000,
+			"age":        36,
+		},
+		"Yina": map[string]float64{ // also possible to redecalre here
+			"woreda": 12,
+			"age":    23,
+		},
+	}
+	if emp, ok := employee["Abel"]; ok {
+		fmt.Println("Experience", emp["experience"], "Salary:", emp["salary"])
+	}
+
 	greet("yina")
 
+	// call the sum func
+	result := sum(salary, price)
+	fmt.Println("result come from func-sum,", result)
+	Rsqrt, messsage := sqrt(58)
+	fmt.Println("From the SQRT func: ", Rsqrt, messsage)
+
+	fmt.Println("RESULT Retruned from f1:", f1())
+
+	fmt.Println("Sum of args is:", add(1, 2, 3))
+
+	nextEven := evengenerator()
+	fmt.Println("First Even:", nextEven())
+	fmt.Println("Second Even:", nextEven())
+	fmt.Println("Third Even:", nextEven())
+
+	fmt.Println("Factorial of num:", fact(5))
+	fmt.Println("Fibonacci of num:", fibon(4))
+	defer sec()
+	fir()
+
+	// panic and recover
+	defer func() {
+		str := recover()
+		fmt.Println("Recovered from paic!", str)
+	}()
+	panic("Panic")
+
+	//use struct: you can also declare struct as global.
+	p := person{name: "Yinebeb", age: 12, address: "Addis"}
+	fmt.Println(p)
+	fmt.Print(p.age)
+
+	type animal struct {
+		spec   string
+		age    int
+		weight float64
+	}
+	//let we initialize the type-animal
+	var ani animal                                    //or
+	an := animal{spec: "cow", age: 12, weight: 45.89} // you can leave the colon and field name if you know the order.
+	fmt.Println(ani, an)
+	type circle struct {
+		xl, yl, rad float64
+	}
+	C := circle{0.0, 0.0, 2.57}
+	fmt.Println(areaCircle(C.xl, C.yl, C.rad))
 }
