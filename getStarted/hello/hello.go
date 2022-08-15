@@ -76,7 +76,6 @@ func main() {
 	count--
 	fmt.Println("THird value", count)
 
-
 	//work with loop, conditions
 	var odd []int
 	var even []int
@@ -214,12 +213,12 @@ func main() {
 		str := recover()
 		fmt.Println("Recovered from paic!", str)
 	}()
-	panic("Panic")
+	// panic("Panic - raised by programmer")
 
 	//use struct: you can also declare struct as global.
 	p := person{name: "Yinebeb", age: 12, address: "Addis"}
-	fmt.Println(p)
-	fmt.Print(p.age)
+	fmt.Println("p is :", p)
+	fmt.Println("p.age is::", p.age)
 
 	type animal struct {
 		spec   string
@@ -230,9 +229,17 @@ func main() {
 	var ani animal                                    //or
 	an := animal{spec: "cow", age: 12, weight: 45.89} // you can leave the colon and field name if you know the order.
 	fmt.Println(ani, an)
-	type circle struct {
-		xl, yl, rad float64
-	}
+	// type circlee struct {
+	// 	xl, yl, rad float64
+	// }
 	C := circle{0.0, 0.0, 2.57}
-	fmt.Println(areaCircle(C.xl, C.yl, C.rad))
+	fmt.Println(areaCircle(C.x, C.y, C.r)) //the float 0.0 will chunck-off to int 0 implicitly.
+
+	//
+	cir := circle{0, 0, 2.75}
+
+	fmt.Println("Area of circel- V0: ", circleArea(cir))
+	fmt.Println("Area of circel- V1: ", circleArea_v1(&cir))
+	fmt.Println("Area of circel- V2: ", cir.circleArea_v2())
+
 }

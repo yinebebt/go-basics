@@ -36,12 +36,13 @@ func add(arg ...int) int {
 	}
 	return total
 }
-func areaCircle(x, y, r float64) float64 {
+func areaCircle(x, y int, r float64) float64 {
 	return math.Pi * r * r
 }
 
 // a function that return another function- closure
-func evengenerator() func() uint { //if the function is used in a return value or to be assigned to avarible, no need to mention a name.
+func evengenerator() func() uint { //if the function is used in a return value or to be assigned to avarible,
+	//no need to mention a name.
 	i := uint(0)               // to make 0 unit- type casting from int to uint.
 	return func() (ret uint) { // the first return value is 0.
 		ret = i
