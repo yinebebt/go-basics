@@ -249,4 +249,8 @@ func main() {
 
 	R := structAndOthers.Person{Name: "Haile", Height: 2, Weight: 62}
 	fmt.Printf("BMI Index of '%s' is %d", R.Name, R.BMI())
+
+	//interface
+	totArea := structAndOthers.TotalArea(structAndOthers.Circle{Rad: 4.5}, structAndOthers.Rect{Len: 4, Wid: 5})
+	fmt.Println("\nTotal Area is ", totArea)
 }
