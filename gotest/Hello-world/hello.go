@@ -33,5 +33,5 @@ func greeting(lang string) (prefix string) {
 	return
 }
 func main() {
-	fmt.Println(hello("Yinebeb", "en"))
+	fmt.Println(hello("Yinebeb", "en")) //this has no issue on the test
 }

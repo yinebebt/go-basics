@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gotest/goWithTest/testCase"
+	"goWithTest/testCase"
 )
 
 func Hello() string {

@@ -1,3 +1,3 @@
-module gotest
+module gotest/Hello-world
 
-go 1.18
+go 1.19
