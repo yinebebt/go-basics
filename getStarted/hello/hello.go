@@ -4,6 +4,7 @@ package main // declaring a package named 'main'.
 
 import (
 	"fmt"
+	"getStarted/structAndOthers"
 	"unsafe"
 )
 
@@ -210,8 +211,8 @@ func main() {
 
 	// panic and recover
 	defer func() {
-		str := recover()
-		fmt.Println("Recovered from paic!", str)
+		str := recover() // str gets <nil>
+		fmt.Println("Recovered from paic,", str)
 	}()
 	// panic("Panic - raised by programmer")
 
@@ -242,4 +243,10 @@ func main() {
 	fmt.Println("Area of circel- V1: ", circleArea_v1(&cir))
 	fmt.Println("Area of circel- V2: ", cir.circleArea_v2())
 
+	//package struct
+	P := structAndOthers.Person{Name: "Yinebeb", Height: 2, Weight: 58}
+	fmt.Printf("BMI Index of '%s' is %d", P.Name, P.BMI())
+
+	R := structAndOthers.Person{Name: "Haile", Height: 2, Weight: 62}
+	fmt.Printf("BMI Index of '%s' is %d", R.Name, R.BMI())
 }
