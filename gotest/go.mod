@@ -1,3 +1,2 @@
-module gotest/Hello-world
-
+module gotest
 go 1.19
