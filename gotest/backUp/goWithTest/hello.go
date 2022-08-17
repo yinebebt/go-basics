@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"goWithTest/testCase"
+	// "goWithTest/testCase"
 )
 
 func Hello() string {
@@ -11,5 +11,5 @@ func Hello() string {
 
 func main() {
 	fmt.Println(Hello())
-	fmt.Println(testCase.Morning)
+	// fmt.Println(testCase.Morning)
 }

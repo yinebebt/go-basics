@@ -46,10 +46,9 @@ func TestSumAll(t *testing.T) {
 	got := SumAll(a, b)
 	want := []int{6, 22}
 
-	for i, _ := range got {
+	for i := range got {
 		if got[i] != want[i] {
 			t.Errorf("got '%d' want '%d' ", got, want)
-		} else {
 		}
 	}
 	//or you can use refelct.DeepEqual to check, but it is not type safe and needs care.
@@ -63,7 +62,7 @@ func TestAllTail(t *testing.T) {
 
 	checkSum := func(t testing.TB, got, want []int) {
 		t.Helper()
-		for i, _ := range got {
+		for i := range got {
 			if got[i] != want[i] {
 				t.Errorf("got '%d' want '%d' ", got, want)
 			}
