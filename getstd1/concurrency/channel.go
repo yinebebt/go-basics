@@ -10,5 +10,17 @@ func channel(name chan string) {
 	fmt.Println("value of make channel: ", mychan)
 
 	fmt.Println("hello" + <-name) // passing data from channel to stdout.
-
+	//let we see effect of closing a channel
+	<-name
 }
+
+// square - more on channel
+func square(c chan int) {
+	for i := 0; i < 10; i++ {
+		c <- i * i //sending square of i to the channel, to retrieve later via a goroutine
+		fmt.Println("from go routine")
+	}
+	close(c)
+}
+
+

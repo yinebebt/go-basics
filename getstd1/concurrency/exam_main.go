@@ -13,7 +13,6 @@ var a int
 func init() { // this init, go's special func will initlaize first.
 	start = time.Now()
 	a = 4
-
 }
 
 func hello(name string) {
@@ -29,6 +28,7 @@ func hello(name string) {
 
 func main() {
 	c := make(chan string)
+	d := make(chan int)
 
 	fmt.Printf("Main execution started %v \n", time.Since(start))
 	//var input string
@@ -42,7 +42,7 @@ func main() {
 	go getchar("hello")
 
 	go getdigit([]int{1, 2, 3, 4, 5})
-	go channel(c) //if cannel comes her, things work fine, but if this is at the bottom, all goroutines will skipped.
+	go channel(c) //if cannel comes her, things work fine, but if this is at the bottom, goroutines will failed.
 
 	//anonymous go-routine
 	go func() {
@@ -54,6 +54,14 @@ func main() {
 	// go channel(c)   //here things will failed
 
 	c <- "John"
+	//	close(c) // closing the channel, belows line will cause a panic
+	//	c <- "Mike"
 
+	go square(d)
+	//for loop, to block/unnblock the main routine
+	for val := range d { //you can use val,ok followed by if else ways
+		fmt.Println(val)
+		fmt.Println("from main routine")
+	}
 	fmt.Printf("Main execution stopped, a: %d\n", a)
 }
