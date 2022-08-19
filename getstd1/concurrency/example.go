@@ -1,29 +1,30 @@
-// example on concurrency
+// // example on concurrency
+
 package main
 
 import (
 	"fmt"
-	"math/rand"
 	"time"
 )
 
-func sum(n int) {
-	for i := 1; i < n; i++ {
-		fmt.Println(n, ":", i)
-		amt := time.Duration(rand.Intn(400)) // to see the gap
-		time.Sleep(time.Millisecond * amt)
-	}
-	fmt.Println("")
+func hello(name string) {
+	fmt.Println("hello routine started.")
+	fmt.Println("hello ", name)
+	// if I add this extra blocking, this hello routine wait for a millisecond and the scheduler will get chance to schedule
+	// routines, the only one and active is hello and will take the race
+	time.Sleep(10 * time.Millisecond)
+	fmt.Println("hello routine ended.")
+
 }
 
 func main() {
-	//everything inside main will go first, sure?
-	fmt.Println("Hello from main - goroutine")
-	for i := 1; i < 4; i++ {
-		go sum(3)          // invoking 4 routines
-		fmt.Println("hhh") //why the routine skip this line
-	}
-	fmt.Println("hey, sum goroutine")
+	fmt.Println("Main execution started.")
 	var input string
-	fmt.Scanln(&input)
+	//creating a goroutine
+	go hello("Abele")
+	//scheduling go routine, here goruntime will swap and execute the hello routine, sleeping the main,
+	//from the multiplexing scheme
+	fmt.Scanln(&input) // this is used as a blocking, to schedule goroutine; you can use time.sleep(10*Milliseconds too)
+
+	fmt.Println("Main execution stopped.")
 }
