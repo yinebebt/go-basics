@@ -17,6 +17,7 @@ func init() { // this init, go's special func will initlaize first.
 }
 
 func hello(name string) {
+
 	fmt.Println("hello routine started.", time.Since(start))
 	fmt.Println("hello ", name)
 	// if I add this extra blocking, this hello routine wait for a millisecond and the scheduler will get chance to schedule
@@ -27,7 +28,7 @@ func hello(name string) {
 }
 
 func main() {
-		c := make(chan string)
+	c := make(chan string)
 
 	fmt.Printf("Main execution started %v \n", time.Since(start))
 	//var input string
@@ -41,15 +42,18 @@ func main() {
 	go getchar("hello")
 
 	go getdigit([]int{1, 2, 3, 4, 5})
+	go channel(c) //if cannel comes her, things work fine, but if this is at the bottom, all goroutines will skipped.
+
 	//anonymous go-routine
 	go func() {
 		fmt.Println("from anonymous go routine")
 	}()
 	// here both function definition and declaration goes in one
 
-	go channel(c)
+	// time.Sleep(10 * time.Millisecond)
+	// go channel(c)   //here things will failed
+
 	c <- "John"
 
-	// time.Sleep(10 * time.Millisecond)
-	// fmt.Printf("Main execution stopped, a: %d\n", a)
+	fmt.Printf("Main execution stopped, a: %d\n", a)
 }
