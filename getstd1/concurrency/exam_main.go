@@ -29,6 +29,7 @@ func hello(name string) {
 func main() {
 	c := make(chan string)
 	d := make(chan int)
+	e := make(chan int, 3)
 
 	fmt.Printf("Main execution started %v \n", time.Since(start))
 	//var input string
@@ -63,5 +64,12 @@ func main() {
 		fmt.Println(val)
 		fmt.Println("from main routine")
 	}
+	go sum(e)
+
+	e <- 10
+	e <- 11
+	e <- 12
+	e <- 13 //here since channel comes full, blocking occur and go's runtime scheduler will invoked,routine will changed
+
 	fmt.Printf("Main execution stopped, a: %d\n", a)
 }

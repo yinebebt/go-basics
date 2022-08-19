@@ -23,4 +23,11 @@ func square(c chan int) {
 	close(c)
 }
 
-
+// channel with buffer size
+func sum(num chan int) {
+	fmt.Println("from sum routine")
+	for i := 0; i < 3; i++ {
+		n := <-num
+		fmt.Println(n * n)
+	}
+}
