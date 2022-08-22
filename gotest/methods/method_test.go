@@ -29,7 +29,7 @@ func TestMethod(t *testing.T) {
 			shp Shape
 			wnt float64
 		}{
-			{&Rectangle{6, 8}, 48.0}, //we used pointer, since onluy *Rectangle does implemen the method 'Area', not Rectangle.
+			{&Rectangle{6, 8}, 48.0}, //we used pointer, since onluy *Rectangle does implemen the method 'Area', not Rectangle and this is due to anonymous declaration, assignment..
 			{&Circle{2}, 6.28},
 		}
 
