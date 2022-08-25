@@ -21,7 +21,11 @@ func TestGreet(t *testing.T) {
 
 func greet(writer *bytes.Buffer, name string) {
 
+<<<<<<< HEAD
 	// fmt.Printf("Hello %s", name)          // this will print to the stdout- the default console/terminal
+=======
+	fmt.Printf("Hello %s", name)          // this will print to the stdout- the default console/terminal
+>>>>>>> c50fe29 (fixing some issue)
 	fmt.Fprintf(writer, "Hello %s", name) // this will print to the buffer writer.
 
 }
