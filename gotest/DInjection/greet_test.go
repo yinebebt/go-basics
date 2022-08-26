@@ -1,8 +1,7 @@
-package dinjection
+package main
 
 import (
 	"bytes"
-	"fmt"
 	"testing"
 )
 
@@ -16,12 +15,5 @@ func TestGreet(t *testing.T) {
 	if got != want {
 		t.Errorf("got %q want %q", got, want)
 	}
-
-}
-
-func greet(writer *bytes.Buffer, name string) {
-
-	// fmt.Printf("Hello %s", name)          // this will print to the stdout- the default console/terminal
-	fmt.Fprintf(writer, "Hello %s", name) // this will print to the buffer writer.
 
 }
