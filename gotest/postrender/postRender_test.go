@@ -51,13 +51,16 @@ func TestRender(t *testing.T) {
 	// 	}
 	// })
 	/*using approval test*/
+
+	postParser, err := postrender.NewPostParser()
+	if err != nil {
+		t.Fatal(err)
+	}
 	t.Run("it converts a single post into HTML", func(t *testing.T) {
 		buf := bytes.Buffer{}
-
-		if err := postrender.Render(&buf, aPost); err != nil {
+		if err := postParser.Render(&buf, aPost); err != nil {
 			t.Fatal(err)
 		}
-
 		approvals.VerifyString(t, buf.String())
 	})
 }
@@ -72,9 +75,13 @@ func BenchmarkRender(b *testing.B) {
 			Tags:        []string{"go", "tdd"},
 		}
 	)
+	postParser, err := postrender.NewPostParser()
+	if err != nil {
+		b.Fatal(err)
+	}
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		postrender.Render(io.Discard, aPost) //Discard is a Writer on which all Write calls succeed without doing anything.
+		postParser.Render(io.Discard, aPost) //Discard is a Writer on which all Write calls succeed without doing anything.
 	}
 }

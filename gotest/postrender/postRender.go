@@ -70,16 +70,26 @@ var (
 	postTemplates embed.FS
 )
 
-func Render(w io.Writer, p Post) error {
-	templ, err := template.ParseFS(postTemplates, "templates/*.gohtml") //	templ, err := template.New("blog").Parse(postTemplate)
+func (pr *postRender) Render(w io.Writer, p Post) error {
 
-	if err != nil {
-		return err
-	}
-
-	if err := templ.Execute(w, p); err != nil {
+	if err := pr.templ.Execute(w, p); err != nil {
 		return err
 	}
 
 	return nil
+}
+
+// doing parser and render in separate to see effect via benchmark test
+type postRender struct {
+	templ *template.Template
+}
+
+func NewPostParser() (*postRender, error) {
+	templ, err := template.ParseFS(postTemplates, "templates/*.gohtml")
+	if err != nil {
+		return nil, err
+	}
+
+	return &postRender{templ: templ}, nil
+
 }
