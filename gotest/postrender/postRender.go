@@ -5,6 +5,7 @@ import (
 	"embed"
 	"html/template"
 	"io"
+	"strings"
 )
 
 // if you're continuing from the read files chapter, you shouldn't redefine this
@@ -92,4 +93,23 @@ func NewPostParser() (*postRender, error) {
 
 	return &postRender{templ: templ}, nil
 
+}
+
+func (r *postRender) RenderIndex(w io.Writer, posts []Post) error {
+	indexTemplate := `<ol>{{range .}}<li><a href="/post/{{sanitiseTitle .Title}}">{{.Title}}</a></li>{{end}}</ol>`
+
+	templ, err := template.New("index").Funcs(template.FuncMap{
+		"sanitiseTitle": func(title string) string {
+			return strings.ToLower(strings.Replace(title, " ", "-", -1)) //-1 means no limit on the #of replacementt
+		},
+	}).Parse(indexTemplate)
+	if err != nil {
+		return err
+	}
+
+	if err := templ.Execute(w, posts); err != nil {
+		return err
+	}
+
+	return nil
 }

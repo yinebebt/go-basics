@@ -63,6 +63,23 @@ func TestRender(t *testing.T) {
 		}
 		approvals.VerifyString(t, buf.String())
 	})
+
+	//indexing html 
+t.Run("it renders an index of posts", func(t *testing.T) {
+	buf := bytes.Buffer{}
+	posts := []postrender.Post{{Title: "Hello World"}, {Title: "Hello World 2"}}
+
+	if err := postParser.RenderIndex(&buf, posts); err != nil {
+		t.Fatal(err)
+	}
+
+	got := buf.String()
+	want := `<ol><li><a href="/post/hello-world">Hello World</a></li><li><a href="/post/hello-world-2">Hello World 2</a></li></ol>`
+
+	if got != want {
+		t.Errorf("got %q want %q", got, want)
+	}
+})
 }
 
 // benchmark to see the effect of parsing every time we run a test versus arsing once.
@@ -85,3 +102,5 @@ func BenchmarkRender(b *testing.B) {
 		postParser.Render(io.Discard, aPost) //Discard is a Writer on which all Write calls succeed without doing anything.
 	}
 }
+
+
