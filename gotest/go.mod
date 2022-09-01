@@ -5,6 +5,7 @@ go 1.19
 require github.com/cucumber/godog v0.12.5
 
 require (
+	github.com/approvals/go-approval-tests v0.0.0-20220530063708-32d5677069bd // indirect
 	github.com/cucumber/gherkin-go/v19 v19.0.3 // indirect
 	github.com/cucumber/messages-go/v16 v16.0.1 // indirect
 	github.com/gofrs/uuid v4.0.0+incompatible // indirect
