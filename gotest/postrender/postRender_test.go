@@ -10,14 +10,14 @@ import (
 )
 
 func TestRender(t *testing.T) {
-	var (
-		aPost = postrender.Post{
-			Title:       "hello world",
-			Body:        "This is a post",
-			Description: "This is a description",
-			Tags:        []string{"go", "tdd"},
-		}
-	)
+	// var (
+	// 	aPost = postrender.Post{
+	// 		Title:       "hello world",
+	// 		Body:        "This is a post",
+	// 		Description: "This is a description",
+	// 		Tags:        []string{"go", "tdd"},
+	// 	}
+	// )
 
 	// t.Run("convert a single post heading into HTML", func(t *testing.T) {
 	// 	buf := bytes.Buffer{} //one of a writer type
@@ -52,34 +52,73 @@ func TestRender(t *testing.T) {
 	// })
 	/*using approval test*/
 
-	postParser, err := postrender.NewPostParser()
+	// 	postParser, err := postrender.NewPostParser()
+	// 	if err != nil {
+	// 		t.Fatal(err)
+	// 	}
+	// 	t.Run("it converts a single post into HTML", func(t *testing.T) {
+	// 		buf := bytes.Buffer{}
+	// 		if err := postParser.Render(&buf, aPost); err != nil {
+	// 			t.Fatal(err)
+	// 		}
+	// 		approvals.VerifyString(t, buf.String())
+	// 	})
+
+	// 	//indexing html
+	// t.Run("it renders an index of posts", func(t *testing.T) {
+	// 	buf := bytes.Buffer{}
+	// 	posts := []postrender.Post{{Title: "Hello World"}, {Title: "Hello World 2"}}
+
+	// 	if err := postParser.RenderIndex(&buf, posts); err != nil {
+	// 		t.Fatal(err)
+	// 	}
+
+	// 	got := buf.String()
+	// 	want := `<ol><li><a href="/post/hello-world">Hello World</a></li><li><a href="/post/hello-world-2">Hello World 2</a></li></ol>`
+
+	// 	if got != want {
+	// 		t.Errorf("got %q want %q", got, want)
+	// 	}
+	// })
+	// }
+
+	/*last-version*/
+	var (
+		aPost = postrender.Post{
+			Title: "hello world",
+			Body: `# First recipe!
+Welcome to my **amazing blog**. I am going to write about my family recipes, and make sure I write a long, irrelevant and boring story about my family before you get to the actual instructions.`,
+			Description: "This is a description",
+			Tags:        []string{"go", "tdd"},
+		}
+	)
+
+	postRenderer, err := postrender.NewPostRenderer()
+
 	if err != nil {
 		t.Fatal(err)
 	}
+
 	t.Run("it converts a single post into HTML", func(t *testing.T) {
 		buf := bytes.Buffer{}
-		if err := postParser.Render(&buf, aPost); err != nil {
+
+		if err := postRenderer.Render(&buf, aPost); err != nil {
 			t.Fatal(err)
 		}
+
 		approvals.VerifyString(t, buf.String())
 	})
 
-	//indexing html 
-t.Run("it renders an index of posts", func(t *testing.T) {
-	buf := bytes.Buffer{}
-	posts := []postrender.Post{{Title: "Hello World"}, {Title: "Hello World 2"}}
+	t.Run("it renders an index of posts", func(t *testing.T) {
+		buf := bytes.Buffer{}
+		posts := []postrender.Post{{Title: "Hello World"}, {Title: "Hello World 2"}}
 
-	if err := postParser.RenderIndex(&buf, posts); err != nil {
-		t.Fatal(err)
-	}
+		if err := postRenderer.RenderIndex(&buf, posts); err != nil {
+			t.Fatal(err)
+		}
 
-	got := buf.String()
-	want := `<ol><li><a href="/post/hello-world">Hello World</a></li><li><a href="/post/hello-world-2">Hello World 2</a></li></ol>`
-
-	if got != want {
-		t.Errorf("got %q want %q", got, want)
-	}
-})
+		approvals.VerifyString(t, buf.String())
+	})
 }
 
 // benchmark to see the effect of parsing every time we run a test versus arsing once.
@@ -92,7 +131,7 @@ func BenchmarkRender(b *testing.B) {
 			Tags:        []string{"go", "tdd"},
 		}
 	)
-	postParser, err := postrender.NewPostParser()
+	postParser, err := postrender.NewPostRenderer()
 	if err != nil {
 		b.Fatal(err)
 	}
@@ -102,5 +141,3 @@ func BenchmarkRender(b *testing.B) {
 		postParser.Render(io.Discard, aPost) //Discard is a Writer on which all Write calls succeed without doing anything.
 	}
 }
-
-
