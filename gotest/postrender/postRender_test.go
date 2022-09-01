@@ -3,6 +3,7 @@ package postrender_test
 import (
 	"bytes"
 	"gotest/postrender"
+	"io"
 	"testing"
 
 	approvals "github.com/approvals/go-approval-tests"
@@ -59,4 +60,21 @@ func TestRender(t *testing.T) {
 
 		approvals.VerifyString(t, buf.String())
 	})
+}
+
+// benchmark to see the effect of parsing every time we run a test versus arsing once.
+func BenchmarkRender(b *testing.B) {
+	var (
+		aPost = postrender.Post{
+			Title:       "hello world",
+			Body:        "This is a post",
+			Description: "This is a description",
+			Tags:        []string{"go", "tdd"},
+		}
+	)
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		postrender.Render(io.Discard, aPost) //Discard is a Writer on which all Write calls succeed without doing anything.
+	}
 }
