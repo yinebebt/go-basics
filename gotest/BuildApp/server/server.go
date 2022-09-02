@@ -6,19 +6,16 @@ import (
 	"strings"
 )
 
-// PlayerServer has a signature similar with HandlerFunc
-func PlayerServer(w http.ResponseWriter, r *http.Request) {
-	player := strings.TrimPrefix(r.URL.Path, "/players/")
-	fmt.Fprint(w, getPlayerScore(player))
+//server.go
+type PlayerStore interface {
+	GetPlayerScore(name string) int
 }
 
-func getPlayerScore(name string) string {
-	if name == "Abel" {
-		return "20"
-	}
+type PlayerServer struct {
+	store PlayerStore
+}
 
-	if name == "Tesfa" {
-		return "10"
-	}
-	return "0"
+func (p *PlayerServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	player := strings.TrimPrefix(r.URL.Path, "/players/")
+	fmt.Fprint(w, p.store.GetPlayerScore(player))
 }

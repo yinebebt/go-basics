@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
-	handler := http.HandlerFunc(server.PlayerServer)
+	server:= &(server.PlayerServer{})
+	handler := http.HandlerFunc(server.ServeHTTP)
 	log.Fatal(http.ListenAndServe(":5050", handler))
 }
