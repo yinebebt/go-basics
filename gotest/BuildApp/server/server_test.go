@@ -18,11 +18,11 @@ func (s *StubPlayerStore) GetPlayerScore(name string) int {
 func TestGETPlayers(t *testing.T) {
 	store := StubPlayerStore{
 		map[string]int{
-			"Abel": 20,
-			"Tesfa":  10,
+			"Abel":  20,
+			"Tesfa": 10,
 		},
 	}
-	server:= &PlayerServer{&store}
+	server := &PlayerServer{&store}
 
 	t.Run("returns Abel's score", func(t *testing.T) {
 		request := getScoreRequest("Abel")
