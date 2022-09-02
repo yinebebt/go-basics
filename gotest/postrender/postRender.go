@@ -152,7 +152,7 @@ func (r *postRender) RenderIndex(w io.Writer, posts []Post) error {
 	return r.templ.ExecuteTemplate(w, "index.gohtml", posts)
 }
 
-//Rather than our rendering code being coupled to the domain object, Post
+// Rather than our rendering code being coupled to the domain object, Post
 type postViewModel struct {
 	Post     //embedded field, sub struct
 	HTMLBody template.HTML
