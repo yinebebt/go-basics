@@ -5,10 +5,14 @@ import (
 	"net/http"
 )
 
+// I created this var to have a global pointer to PLaySrver in testing and main, But lately get it less important.
+var pstore = &PlayerServer{NewInMemoryPlayerStore()}
+
 func main() {
-	server := &PlayerServer{NewInMemoryPlayerStore()}
+	server := &PlayerServer{NewInMemoryPlayerStore()} // the reason here we use pointer is since *PlayerStore does implement serverHTTP
 	// handler := http.HandlerFunc(server.ServeHTTP)
 	log.Fatal(http.ListenAndServe(":5000", server)) //you can pass hander too
+	// fmt.Println("pointer to PlayServer: ", pstore)
 }
 
 // func (i *InMemoryPlayerStore) GetPlayerScore(name string) int {
@@ -29,6 +33,6 @@ func (i *InMemoryPlayerStore) RecordWin(name string) {
 }
 
 func (i *InMemoryPlayerStore) GetPlayerScore(name string) int {
-	score:= i.store[name]
+	score := i.store[name]
 	return score
 }
