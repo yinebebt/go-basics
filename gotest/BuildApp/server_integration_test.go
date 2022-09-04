@@ -8,7 +8,9 @@ import (
 )
 
 func TestRecordingWinsAndRetrievingThem(t *testing.T) {
-	server := PlayerServer{NewInMemoryPlayerStore()}  //initialize PLayeSore with a map with default value
+	// server := PlayerServer{NewInMemoryPlayerStore()}  //initialize PLayeSore with a map with default value
+	server := NewPlayerServer(NewInMemoryPlayerStore())
+
 	// server := pstore  // If you want to use the global pointer, but it seems meaning less testing should run independently.
 	player := "Abel"
 	server.ServeHTTP(httptest.NewRecorder(), PostWinRequest(player))
