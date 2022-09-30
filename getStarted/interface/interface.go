@@ -1,6 +1,7 @@
-package structAndOthers
+package main
 
 import (
+	"fmt"
 	"math"
 )
 
@@ -47,7 +48,7 @@ func TotalArea(Shapes ...shape) float64 {
 	return area
 }
 
-// func main() {
-// 	totArea := totalArea(circle{4.5}, rect{4, 5})
-// 	fmt.Println("Total Area is ", totArea)
-// }
+func main() {
+	totArea := TotalArea(Circle{4.5}, Rect{4, 5})
+	fmt.Println("Total Area is ", totArea)
+}

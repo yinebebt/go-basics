@@ -79,21 +79,11 @@ func zero(xptr *int) {
 	*xptr = 0
 }
 
-// func main() {
-// x := 5
-// zero(&x)
-// fmt.Println(x) // x is still 5, but if we use a pointer in func zero, it will be 0.
-// }
-
 // more on pointers:
 func square(x *float64) {
 	*x = *x * *x
 }
 
-//	func main() {
-//		x := 1.5
-//		square(&x) // after this x will be 2.25
-//	}
 func swap(x *int, y *int) {
 	temp := *y // temp will intialized as a pointer and store value of y = *y
 	*y = *x    // assign value of x to y
@@ -112,7 +102,7 @@ var greetings = map[string]string{ // globally dcalarations need a var keyword.
 }
 
 func greet(name string) {
-	for id, _ := range greetings {
+	for id := range greetings {
 		if welcom, ok := greetings[id]; ok {
 			fmt.Println(welcom, name)
 		} else {
@@ -120,3 +110,28 @@ func greet(name string) {
 		}
 	}
 }
+
+
+// more on struct
+type circle struct {
+	x, y int
+	r    float64
+}
+
+// passing variable-struct circle, by value.
+func circleArea(c circle) float64 {
+	return math.Pi * c.r * c.r
+}
+
+// passing variable-circle, by reference.
+func circleArea_v1(c *circle) float64 {
+	return math.Pi * c.r * c.r
+}
+
+func (c *circle) circleArea_v2() float64 { //by passing a receiver btw func and funcName,
+	//this will allows us to call a function using the . operator.
+	//But if we can via dot, could it support definition of more than one method?
+	return math.Pi * c.r * c.r
+
+}
+

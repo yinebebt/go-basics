@@ -1,4 +1,6 @@
-package structAndOthers
+package main
+
+import "fmt"
 
 type Person struct {
 	Name   string
@@ -22,4 +24,13 @@ func (r Runner) BMI_R() int {
 	// fmt.Println("This gives us a BMI, from a struct")
 	bmi_index := (r.Weight / r.Height)
 	return bmi_index
+}
+
+func main() {
+	//package struct
+	P := Person{Name: "Yinebeb", Height: 2, Weight: 58}
+	fmt.Printf("BMI Index of '%s' is %d", P.Name, P.BMI())
+
+	R := Person{Name: "Haile", Height: 2, Weight: 62}
+	fmt.Printf("BMI Index of '%s' is %d", R.Name, R.BMI())
 }
