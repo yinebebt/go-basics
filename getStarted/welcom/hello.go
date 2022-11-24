@@ -113,7 +113,7 @@ func main() {
 		str := recover() // str gets <nil>
 		fmt.Println("Recovered from paic,", str)
 	}()
-	// panic("Panic - raised by programmer")
+	//panic("Panic - raised by programmer")
 
 	//use struct: you can also declare struct as global.
 	p := person{name: "Yinebeb", age: 12, address: "Addis"}
