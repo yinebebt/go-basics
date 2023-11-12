@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func main() {
-
 	// a hash table - go's map
 	m := make(map[int]string) // before use, map need to be initiated. this is initiated wit pair 0,"" values
 	m[1] = "Apple"

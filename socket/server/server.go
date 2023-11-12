@@ -1,4 +1,4 @@
-// socket-server project main.go
+// socket-server
 package main
 
 import (
@@ -8,20 +8,20 @@ import (
 )
 
 const (
-	SERVER_HOST = "localhost"
-	SERVER_PORT = "9988"
-	SERVER_TYPE = "tcp"
+	ServerHost = "localhost"
+	ServerPort = "9988"
+	ServerType = "tcp"
 )
 
 func main() {
 	fmt.Println("Server Running...")
-	server, err := net.Listen(SERVER_TYPE, SERVER_HOST+":"+SERVER_PORT)
+	server, err := net.Listen(ServerType, ServerHost+":"+ServerPort)
 	if err != nil {
 		fmt.Println("Error listening:", err.Error())
 		os.Exit(1)
 	}
 	defer server.Close()
-	fmt.Println("Listening on " + SERVER_HOST + ":" + SERVER_PORT)
+	fmt.Println("Listening on " + ServerHost + ":" + ServerPort)
 	fmt.Println("Waiting for client...")
 	for {
 		connection, err := server.Accept()

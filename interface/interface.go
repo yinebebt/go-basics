@@ -5,50 +5,51 @@ import (
 	"math"
 )
 
-type shape interface {
-	area() float64
-	peremeter() float64
+type Shape interface {
+	Area() float64
+	Peremeter() float64
 }
 
-// let we create struct who implement the interface shape
+// Circle : let we create struct who implement the interface shape
 type Circle struct {
 	Rad float64
 }
+
 type Rect struct {
 	Len, Wid float64
 }
 
-//below these struct will implement the interface by consuming all the methods shape have.
-
-func (c Circle) area() float64 {
+// Area : below these struct will implement the interface by consuming all the methods Shape have.
+func (c Circle) Area() float64 {
 	return math.Pi * c.Rad * c.Rad
 }
 
-func (c Circle) peremeter() float64 {
+func (c Circle) Peremeter() float64 {
 	return 2 * math.Pi * c.Rad
 }
 
-func (r Rect) area() float64 {
+func (r Rect) Area() float64 {
 	return r.Len * r.Wid
 }
 
-func (r Rect) peremeter() float64 {
+func (r Rect) Peremeter() float64 {
 	return 2 * (r.Len + r.Wid)
 }
 
-func (r Rect) newPeremeter() float64 { //here rect r act as a receiver, and possible to access this func as r.newPermeter
+// NewPeremeter : here rect r act as a receiver, and possible to access this func as r.NewPermeter
+func (r Rect) NewPeremeter() float64 {
 	return 2 * (r.Len + r.Wid)
 }
 
-func TotalArea(Shapes ...shape) float64 {
+func TotalArea(Shapes ...Shape) float64 {
 	var area float64
 	for _, s := range Shapes {
-		area += s.area()
+		area += s.Area()
 	}
 	return area
 }
 
 func main() {
 	totArea := TotalArea(Circle{4.5}, Rect{4, 5})
-	fmt.Println("Total Area is ", totArea)
+	fmt.Println("Total area is ", totArea)
 }

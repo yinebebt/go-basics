@@ -36,8 +36,8 @@ func main() {
 	}
 
 	// Want performance? Store pointers!
-	mystruct := &MyStruct{}
-	c.Set("foo", mystruct, cache.DefaultExpiration)
+	myStruct := &MyStruct{}
+	c.Set("foo", myStruct, cache.DefaultExpiration)
 	if x, found := c.Get("foo"); found {
 		foo = x.(*MyStruct)
 		fmt.Println("from pointer cache", foo)

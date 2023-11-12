@@ -1,8 +1,6 @@
-/*
-For more, checkout
-	https://securego.io/docs/rules/g304.html
-	https://github.com/securego/gosec
-*/
+// For more, checkout
+// https://securego.io/docs/rules/g304.html
+// https://github.com/securego/gosec
 
 package gosec
 
@@ -12,7 +10,7 @@ import (
 	"net/http"
 )
 
-// run `gosec -include=G101 ./gosec`
+// gosecG101 don't use literals like password, token as a variable name.
 func gosecG101() {
 	username := "admin"
 	var password = "f62e5bcda4fae4f82370da0c6f20697b8f8447ef"
@@ -20,8 +18,7 @@ func gosecG101() {
 	fmt.Println("Doing something with: ", username, password)
 }
 
-//don't use literals like password, token as a variable name.
-
+// gosecG107 declare the url as constant instead of var
 func gosecG107() {
 	var url string = "https://www.google.com"
 
@@ -37,4 +34,4 @@ func gosecG107() {
 	fmt.Printf("%s", body)
 }
 
-// declare the url as constant instead of var
+// Note to run, use `$gosec -include=G101 ./gosec` command

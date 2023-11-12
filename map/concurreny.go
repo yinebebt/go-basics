@@ -6,9 +6,8 @@ import (
 	"sync"
 )
 
-// go's map doesn't support concurrent read/r=write, and
-//there is no definition if a routine do that onto a map at a time
-//one way to do is using sync.RWMutex
+// go's map doesn't support concurrent read/write, and there is no definition if a routine do that onto a map at a time
+// one way to do is using sync.RWMutex
 
 var counter = struct {
 	sync.RWMutex

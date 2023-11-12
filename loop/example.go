@@ -32,15 +32,15 @@ func main() {
 		switch grade {
 
 		case 40:
-			fmt.Println("Your grade is fourty.")
+			fmt.Println("Your grade is forty.")
 		case 80:
 			fmt.Println("Your grade is eighty.")
 		case 100:
 			fmt.Println("Wow, really you are smart")
-			fmt.Println("we will hire you!")
+			fmt.Println("We will hire you!")
 
 		default:
-			fmt.Println("NO grade given!")
+			fmt.Println("No grade given!")
 		}
 	}
 }

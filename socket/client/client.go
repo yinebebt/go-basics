@@ -1,4 +1,4 @@
-// socket-client project main.go
+// socket-client
 package main
 
 import (
@@ -7,18 +7,18 @@ import (
 )
 
 const (
-	SERVER_HOST = "localhost"
-	SERVER_PORT = "9988"
-	SERVER_TYPE = "tcp"
+	ServerHost = "localhost"
+	ServerPort = "9988"
+	ServerType = "tcp"
 )
 
 func main() {
-	//establish connection
-	connection, err := net.Dial(SERVER_TYPE, SERVER_HOST+":"+SERVER_PORT)
+	// establish connection
+	connection, err := net.Dial(ServerType, ServerHost+":"+ServerPort)
 	if err != nil {
 		panic(err)
 	}
-	///send some data
+	// send some data
 	_, err = connection.Write([]byte("Hello Server! Greetings."))
 	buffer := make([]byte, 1024)
 	mLen, err := connection.Read(buffer)

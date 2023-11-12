@@ -61,22 +61,22 @@ func fileCrt() {
 }
 
 // opening directory
-func openDir() { //you can pass the path here, path stirng
+func openDir() { //you can pass the path here, path string
 	dir, err := os.Open(".")
 	if err != nil {
 		return
 	}
 	defer dir.Close()
-	fileInfos, err := dir.Readdir(-1)
+	fileInfo, err := dir.Readdir(-1)
 	if err != nil {
 		return
 	}
-	for _, fi := range fileInfos {
+	for _, fi := range fileInfo {
 		fmt.Println(fi.Name())
 	}
 }
 
-// or inshort
+// in a shorter way
 func openDIr1() {
 	filepath.Walk(".", func(path string, info os.FileInfo, err error) error {
 		fmt.Println(path)
@@ -104,16 +104,16 @@ type Person struct {
 }
 type ByName []Person
 
-func (this ByName) Len() int {
-	return len(this)
+func (n ByName) Len() int {
+	return len(n)
 }
 
-func (this ByName) Less(i, j int) bool {
-	return this[i].Name < this[j].Name
+func (n ByName) Less(i, j int) bool {
+	return n[i].Name < n[j].Name
 }
 
-func (this ByName) Swap(i, j int) {
-	this[i], this[j] = this[j], this[i]
+func (n ByName) Swap(i, j int) {
+	n[i], n[j] = n[j], n[i]
 }
 
 func toBe_main() { // take this to main
@@ -128,9 +128,9 @@ func toBe_main() { // take this to main
 //sort end
 
 //pkg cryptography: cryptographic from pkg-crypto; and they are hard to revert. eg sha-1
-// and non cryptographic- from pkg-hash eg. adler32,crc32, crc64 and fnv.
+// and non-cryptographic- from pkg-hash e.g. adler32,crc32, crc64 and fnv.
 
-// examples: hashing may used to compare to datas
+// examples: hashing may be used to compare data
 func empcrc32() {
 	h := crc32.NewIEEE()
 	h.Write([]byte("test"))
@@ -204,8 +204,7 @@ func toBemain() {
 }
 
 // tcp server end
-
-// /http example
+// http example
 func hello(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set(
 		"Content-Type", // key
