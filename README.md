@@ -1,8 +1,16 @@
-# golang
-this is  a project in which I am practicing the golang. 
+# go-basics
 
-# Resources
-learn go with test;  stackoverflow, github, and other blogs.
+## Get started with Go
 
-here I add this to see fetch/pull
-Augest 9, 2022
+This project covers several basics topics, with helpful comments. 
+It was initially started while I was practicing golang at 2F-Capital PLC. 
+
+## Resources
+
+* stackoverflow, 
+* GitHub, and 
+* Other blogs
+
+## Author 
+
+ [Yinebeb T.](https://github.com/Yinebeb-01)
