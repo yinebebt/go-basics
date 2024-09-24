@@ -1,15 +1,5 @@
-# go-basics
+# Go Basics
 
-## Get started with Go
+A collection of [Go](https://go.dev/) programming topics with helpful comments. Covers the fundamentals of the language.
 
-This project covers several basics topics, with helpful comments. 
-
-## Resources
-
-* stackoverflow, 
-* GitHub, and 
-* Other blogs
-
-## Author 
-
- [Yinebeb T.](https://github.com/yinebebt)
+Explore the code, ask questions, and contribute!
