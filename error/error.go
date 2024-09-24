@@ -1,3 +1,5 @@
+// Package error demonstrates Go's error handling pattern.
+// In Go, errors are returned as values and handled explicitly by the caller
 package main
 
 type printerError struct{}

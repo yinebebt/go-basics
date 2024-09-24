@@ -1,5 +1,8 @@
-// Get started with golang, let we dig to go...
-package main // declaring a package named 'main'
+// Package go101 provides an introduction to Go programming basics.
+// Go is a statically typed, compiled language designed for simplicity and performance.
+
+// declaring a package named 'main'
+package main
 
 import (
 	"fmt"

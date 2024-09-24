@@ -1,3 +1,4 @@
+// Package struct demonstrates how to define and use structs in Go.
 package main
 
 import "fmt"

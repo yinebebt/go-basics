@@ -1,3 +1,4 @@
+// Package loop demonstrates ways to use loops in Go.
 package main
 
 import "fmt"

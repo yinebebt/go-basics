@@ -1,3 +1,4 @@
+// Package sys demonstrates system-level operations like file handling and process management.
 package main
 
 import (

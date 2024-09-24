@@ -1,3 +1,5 @@
+// Package closure demonstrates how closures work in Go.
+// A closure is a function value that references variables from outside its body.
 package main
 
 import (
@@ -14,12 +16,12 @@ func evaluate(x int) []error {
 	aggErr := aggregateErrors()
 
 	if x > 10 {
-		err := fmt.Errorf("%d is over 10\n", x)
+		err := fmt.Errorf("%d is over 10", x)
 		aggErr(err)
 	}
 
 	if x > 20 {
-		err := fmt.Errorf("%d is over 20\n", x)
+		err := fmt.Errorf("%d is over 20", x)
 		aggErr(err)
 	}
 

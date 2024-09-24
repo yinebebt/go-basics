@@ -1,3 +1,5 @@
+// Package interface demonstrates Go's interface system.
+// Interfaces allow different types to be treated uniformly if they implement the same methods.
 package main
 
 import (

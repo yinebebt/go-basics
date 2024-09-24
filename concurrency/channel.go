@@ -1,3 +1,5 @@
+// Package concurrency demonstrates Go's concurrency model.
+// Go uses goroutines and channels to manage concurrent execution.
 package main
 
 import "fmt"

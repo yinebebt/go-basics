@@ -1,3 +1,4 @@
+// Package nethttp demonstrates how to create an HTTP server in Go.
 package main
 
 import (

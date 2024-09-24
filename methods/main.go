@@ -1,3 +1,4 @@
+// Package methods demonstrates how to define and use methods in Go.
 package main
 
 import "fmt"

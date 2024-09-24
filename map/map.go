@@ -1,3 +1,4 @@
+// Package map demonstrates how to work with maps in Go.
 package main
 
 import "fmt"

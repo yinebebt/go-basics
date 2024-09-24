@@ -1,7 +1,5 @@
-// For more, checkout
-// https://securego.io/docs/rules/g304.html
-// https://github.com/securego/gosec
-
+// Package gosec demonstrates how to scan Go code for potential security vulnerabilities using Gosec.
+// For more, checkout https://securego.io/docs/rules/g304.html, https://github.com/securego/gosec
 package gosec
 
 import (

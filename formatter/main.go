@@ -1,3 +1,4 @@
+// Package formatter shows how to use the fmt package to format strings, numbers, and other data types.
 package main
 
 import (

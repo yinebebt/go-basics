@@ -1,3 +1,4 @@
+// Package go-cache demonstrates a simple in-memory caching system.
 package main
 
 import (
@@ -45,5 +46,5 @@ func main() {
 }
 
 type MyStruct struct {
-	name string
+	Name string
 }
