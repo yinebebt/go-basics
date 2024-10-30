@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:type" content="article" />
+
+    <title>{{ .Title }}</title>
+    <meta property="og:title" content="{{ .Title }}" />
+    <meta property="og:url" content={{.Link}} />
+    <meta name="twitter:title" content="{{ .Title }}" />
+
+    <meta name="description" content="{{ .Description }}" />
+    <meta property="og:description" content="{{ .Description }}" />
+    
+    <meta name="twitter:description" content="{{ .Description }}" />
+    <meta property="twitter:url" content={{.Link}} />
+
+    <meta property="og:image" content="{{ .ImageURL }}" />
+    <meta name="twitter:image" content="{{ .ImageURL }}" />
+  </head>
+  <body></body>
+</html>
